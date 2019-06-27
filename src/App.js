@@ -31,14 +31,15 @@ class App extends React.Component {
       .then(res => {
         console.log('This is our response  ' + Object.entries(res));
         this.setState(prevState => ({
-          gas: { 
+          gas: {
             ...(prevState.gas),
             prev: res.gas.reading
           },
-          elec: { 
+          elec: {
             ...(prevState.elec),
-            prev: res.electricity.reading},
-          
+            prev: res.electricity.reading
+          },
+
         }))
       }).catch(err => {
         console.log("Our fetch request is failing, error: " + err);
@@ -70,22 +71,22 @@ class App extends React.Component {
             <input name='gas' type='number'
               onChange={e => this.handleInput(e)} /></div>
           <div className='item'>Gas Reading Entered:
-            <span>{this.state.gas.current}</span></div>
+            <span>{format(this.state.gas.current)}</span></div>
           <div className='item'>Gas units used =>
 
             <div className='used'>
               Current:
-            <span>{this.state.gas.current}</span>
+            <span>{format(this.state.gas.current)}</span>
               <br />
               previous:
-            <span>{this.state.gas.prev}</span> <br />Used:
-            <span>{this.state.gas.used}</span>
+            <span>{format(this.state.gas.prev)}</span> <br />Used:
+            <span>{format(this.state.gas.used)}</span>
             </div>
 
           </div>
           <div className='item'>Gas bill amount =>
-            <span>{this.state.gas.bill}</span>p (£
-            <span id='pound'>{this.state.gas.bill / 100}</span>)
+            <span>{format(this.state.gas.bill)}</span>p (£
+            <span id='pound'>{format(this.state.gas.bill / 100)}</span>)
           </div>
         </div>
 
@@ -95,28 +96,51 @@ class App extends React.Component {
             <input name='elec' type='number'
               onChange={e => this.handleInput(e)} />
           </div>
-          <div className='item'>Electricty Reading Entered: <span>{this.state.elec.current}</span></div>
+          <div className='item'>Electricty Reading Entered: <span>{format(this.state.elec.current)}</span></div>
           <div className='item'>Electricty units used =>
 
           <div className='used'>
               Current:
-            <span>{this.state.elec.current}</span>
+            <span>{format(this.state.elec.current)}</span>
               <br />
               previous:
-              <span>{this.state.elec.prev}</span> => <br />Used:
-              <span>{this.state.elec.used}</span>
+              <span>{format(this.state.elec.prev)}</span> => <br />Used:
+              <span>{format(this.state.elec.used)}</span>
             </div>
           </div>
 
           <div className='item'>Electricty bill amount =>
-            <span>{this.state.elec.bill}</span>p (£
-            <span id='pound'>{this.state.elec.bill / 100}</span>)
+            <span>{format(this.state.elec.bill)}</span>p (£
+            <span id='pound'>{format(this.state.elec.bill / 100)}</span>)
           </div>
 
         </div>
       </div>
     );
   }
+}
+
+const format = number => {
+  return number == 0 ? 0 : commaDelimit(number)
+}
+
+const commaDelimit = number => {
+  let string = number.toString();
+  return !string.includes('.') ? string
+    .split('')
+    .reverse()
+    .map((char, index) => {
+      return index % 3 == 0 && index != 0 && char != '-' ? char + ',' : char
+    }).reverse().join('') :
+    string
+      .split('.').reduce((whole, fraction) => {
+        console.log("Whole " + whole + " fraction " + fraction);
+        return whole.split('')
+          .reverse()
+          .map((char, index) => {
+            return index % 3 == 0 && index != 0 && char != '-' ? char + ',' : char
+          }).reverse().join('').concat('.' + fraction);
+      });
 }
 
 export default App;

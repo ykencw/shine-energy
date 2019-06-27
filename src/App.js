@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.scss';
 
-import '/Users/vincentman/Desktop/Prog/shine-energy/src/SASS Utilities/KeyFrames.scss';
+import '/Users/vincentman/Desktop/Prog/shine-energy/src/Utilities/KeyFrames.scss'
+import { EventEmitter } from 'events';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,6 +48,11 @@ class App extends React.Component {
   }
 
   handleInput = event => {
+    if (event.target.value >= 1000000000) {
+      event.target.value = 999999999;
+    } else if (event.target.value <= -1000000000) {
+      event.target.value = -999999999;
+    }
     const reading = event.target.value;
     const name = event.target.name;
     this.setState(prevState => ({
@@ -64,11 +70,16 @@ class App extends React.Component {
       <div className="App">
         <h1 className='title'>SHINE ENERGY</h1>
         <h2 className='subtitle'>Your Account Summary</h2>
-
         <div className='container container1'>
           <div className='item'>
+            Total Bill: <span>{format(this.state.gas.bill + this.state.elec.bill)}
+            p (£{format((this.state.gas.bill + this.state.elec.bill) / 100)})</span>
+          </div>
+        </div>
+        <div className='container container2'>
+          <div className='item'>
             <label htmlFor='gas'>Gas Reading:</label>
-            <input name='gas' type='number'
+            <input type='number' max="999" name='gas' 
               onChange={e => this.handleInput(e)} /></div>
           <div className='item'>Gas Reading Entered:
             <span>{format(this.state.gas.current)}</span></div>
@@ -93,7 +104,7 @@ class App extends React.Component {
         <div className='container'>
           <div className='item'>
             <label htmlFor='elec'>Electricity Reading:</label>
-            <input name='elec' type='number'
+            <input type='number' max="999" name='elec' 
               onChange={e => this.handleInput(e)} />
           </div>
           <div className='item'>Electricty Reading Entered: <span>{format(this.state.elec.current)}</span></div>

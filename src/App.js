@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-// import './Utilities/KeyFrames.scss';
+import '/Users/vincentman/Desktop/Prog/shine-energy/src/SASS Utilities/KeyFrames.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,9 +30,14 @@ class App extends React.Component {
       })
       .then(res => {
         console.log('This is our response  ' + Object.entries(res));
-        this.setState(() => ({
-          gas: { prev: res.gas.reading, current: 0, used: 0, bill: 0 },
-          elec: { prev: res.electricity.reading, current: 0, used: 0, bill: 0 },
+        this.setState(prevState => ({
+          gas: { 
+            ...(prevState.gas),
+            prev: res.gas.reading
+          },
+          elec: { 
+            ...(prevState.elec),
+            prev: res.electricity.reading},
           
         }))
       }).catch(err => {
@@ -41,14 +46,14 @@ class App extends React.Component {
   }
 
   handleInput = event => {
-    const reading = +event.target.value;
+    const reading = event.target.value;
     const name = event.target.name;
-    this.setState(() => ({
+    this.setState(prevState => ({
       [name]: {
-        prev: this.state[name].prev,
+        prev: prevState[name].prev,
         current: reading,
-        used: reading - this.state[name].prev,
-        bill: (100 * 10) + ((reading - this.state[name].prev - 100) * 20)
+        used: reading - prevState[name].prev,
+        bill: (100 * 10) + ((reading - prevState[name].prev - 100) * 20)
       }
     }));
   }

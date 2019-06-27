@@ -15,6 +15,7 @@ html, body, .App {
 
 .App {
   padding: 50px;
+  animation: fadeOut 3s;
 
   .title {
     font-size: 50px;
@@ -39,7 +40,6 @@ html, body, .App {
   background-color: #070930;
   border: 1px solid white;
   transition: .9s;
-  animation: fadeOut 8s;
 }
 
 .container1 {

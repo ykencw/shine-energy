@@ -54,14 +54,19 @@ class App extends React.Component {
     }
     const reading = event.target.value;
     const name = event.target.name;
-    this.setState(prevState => ({
-      [name]: {
-        prev: prevState[name].prev,
-        current: reading,
-        used: reading - prevState[name].prev,
-        bill: (100 * 10) + ((reading - prevState[name].prev - 100) * 20)
-      }
-    }));
+    this.setState(prevState => {
+      const subtotal = reading - prevState[name].prev;
+      return ({
+        [name]: {
+          prev: prevState[name].prev,
+          current: reading,
+          used: subtotal,
+          bill: subtotal <= 100 ?
+            (subtotal) * 10 :
+            (100 * 10) + ((subtotal - 100) * 20)
+        }
+      });
+    });
   }
 
   render() {

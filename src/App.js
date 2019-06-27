@@ -5,7 +5,7 @@ class App extends React.Component  {
   constructor(props) {
     super(props)
     this.state = {
-      readings: {}
+      readings: { gas: 0, gasUsed: 0, gasBill: 0 }
     };
   }
 
@@ -14,9 +14,12 @@ class App extends React.Component  {
   }
 
   handleInput = event => {
+    const reading = event.target.value;
     this.setState(() => ({
       readings: {
-        gas: event.target.value
+        gas: reading,
+        gasUsed: reading - 11000,
+        gasBill: (100 * 10) + ((reading - 11000 )* 20)
       }
     }));
   }
@@ -26,8 +29,12 @@ class App extends React.Component  {
       <div className="App">
         <label for='gas'>Gas Reading:</label>
         <input name='gas' type='number' 
-          onChange={this.handleInput} />
+          onChange={e => this.handleInput(e)} />
         <input type='number' />
+
+        <div>Gas Reading Entered: {this.state.readings.gas}</div>
+        <div>Gas units used => Current: {this.state.readings.gas} Previous: 11000 => Used: {this.state.readings.gasUsed}</div>
+        <div>Gas bill amount => {this.state.readings.gasBill}p</div>
       </div>
     );
   }

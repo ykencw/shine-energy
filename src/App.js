@@ -6,8 +6,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       readings: { 
-        gasPrev: 0, gas: 0, gasUsed: 0, gasBill: 0,
-        elecPrev: 0, elec: 0, elecUsed: 0, elecBill: 0 }
+        gasPrev: 11000, gas: 0, gasUsed: 0, gasBill: 0,
+        elecPrev: 11000, elec: 0, elecUsed: 0, elecBill: 0 }
     };
   }
 
@@ -17,7 +17,7 @@ class App extends React.Component {
         return res.ok ? res.json() : Promise.reject()
       })
       .then(res => {
-        console.log(res);
+        console.log('This is our response  ' + res);
         this.setState(() => ({
           readings: { 
             gasPrev: res.gas.reading,
@@ -34,9 +34,10 @@ class App extends React.Component {
     const name = event.target.name;
     this.setState(() => ({
       readings: {
+        [name + 'Prev']: this.state.readings[name + 'Prev'],
         [name]: reading,
-        [name + 'Used']: reading - this.state.readings[name + 'prev'],
-        [name +'Bill']: (100 * 10) + ((reading - this.state.readings[name + 'prev'] - 100) * 20)
+        [name + 'Used']: reading - this.state.readings[name + 'Prev'],
+        [name +'Bill']: (100 * 10) + ((reading - this.state.readings[name + 'Prev'] - 100) * 20)
       }
     }));
   }

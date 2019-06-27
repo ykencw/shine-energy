@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.43fda347.chunk.css",
-    "main.js": "/react-gh-pages/static/js/main.e3572fd4.chunk.js",
-    "main.js.map": "/react-gh-pages/static/js/main.e3572fd4.chunk.js.map",
-    "runtime~main.js": "/react-gh-pages/static/js/runtime~main.ac2d5040.js",
-    "runtime~main.js.map": "/react-gh-pages/static/js/runtime~main.ac2d5040.js.map",
-    "static/js/2.2d43439a.chunk.js": "/react-gh-pages/static/js/2.2d43439a.chunk.js",
-    "static/js/2.2d43439a.chunk.js.map": "/react-gh-pages/static/js/2.2d43439a.chunk.js.map",
-    "index.html": "/react-gh-pages/index.html",
-    "precache-manifest.f5060aad1c22cd34cc80aff56754c3d8.js": "/react-gh-pages/precache-manifest.f5060aad1c22cd34cc80aff56754c3d8.js",
-    "service-worker.js": "/react-gh-pages/service-worker.js",
-    "static/css/main.43fda347.chunk.css.map": "/react-gh-pages/static/css/main.43fda347.chunk.css.map"
+    "main.css": "/shine-energy/static/css/main.70785b87.chunk.css",
+    "main.js": "/shine-energy/static/js/main.5957a8dd.chunk.js",
+    "main.js.map": "/shine-energy/static/js/main.5957a8dd.chunk.js.map",
+    "runtime~main.js": "/shine-energy/static/js/runtime~main.2555065e.js",
+    "runtime~main.js.map": "/shine-energy/static/js/runtime~main.2555065e.js.map",
+    "static/js/2.65c4bffa.chunk.js": "/shine-energy/static/js/2.65c4bffa.chunk.js",
+    "static/js/2.65c4bffa.chunk.js.map": "/shine-energy/static/js/2.65c4bffa.chunk.js.map",
+    "index.html": "/shine-energy/index.html",
+    "precache-manifest.14a0baf5121b95b44c1b3df5161dfeca.js": "/shine-energy/precache-manifest.14a0baf5121b95b44c1b3df5161dfeca.js",
+    "service-worker.js": "/shine-energy/service-worker.js",
+    "static/css/main.70785b87.chunk.css.map": "/shine-energy/static/css/main.70785b87.chunk.css.map"
   }
 }

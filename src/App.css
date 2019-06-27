@@ -10,5 +10,10 @@ html, body, .App {
 
 .App {
   background: cyan;
-  
+  padding: 50px;
+}
+
+
+label, .item {
+  font-size: 30px
 }

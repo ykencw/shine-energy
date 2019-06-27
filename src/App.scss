@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #080A52;
+  color: white;
+}
+
+html, body, .App {
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
+.App {
+  padding: 50px;
+
+  .title {
+    font-size: 50px;
+  }
+
+  .subtitle {
+    font-size: 40px;
+  }
+
+
+  label, .item {
+    font-size: 30px;
+    color: #EB2188; 
+    font-weight: 600;
+  }
+}
+
+.container {
+  display: grid;
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: #070930;
+  border: 1px solid white;
+  transition: .9s;
+  animation: fadeOut 8s;
+}
+
+.container1 {
+  margin-bottom: 30px;
+}
+
+input {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.item {
+  span {
+    color: white; 
+    margin-left: 0.4em;
+  }
+  span#pound {
+    margin-left: 0;
+  }
+}
+
+.used {
+
+  margin: 10px 0 5px 10px;
+  padding: 5px;
+}
+

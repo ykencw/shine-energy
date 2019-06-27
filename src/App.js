@@ -14,7 +14,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch(`https://shine-energy.netlify.com/.netlify/functions/meter-readings`, { mode: 'no-cors'} )
       .then(res => {
-        return res.ok ? res.json() : Promise.reject()
+        return res.json();
       })
       .then(res => {
         console.log('This is our response  ' + res);
@@ -24,8 +24,8 @@ class App extends React.Component {
             elecPrev: res.electricity.reading
           }
         }))
-      }).catch(() => {
-        console.log("Our fetch request is failing");
+      }).catch(err => {
+        console.log("Our fetch request is failing, error: " + err);
       });
   }
 

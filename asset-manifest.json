@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shine-energy/static/css/main.70785b87.chunk.css",
-    "main.js": "/shine-energy/static/js/main.5957a8dd.chunk.js",
-    "main.js.map": "/shine-energy/static/js/main.5957a8dd.chunk.js.map",
+    "main.js": "/shine-energy/static/js/main.677d88e6.chunk.js",
+    "main.js.map": "/shine-energy/static/js/main.677d88e6.chunk.js.map",
     "runtime~main.js": "/shine-energy/static/js/runtime~main.2555065e.js",
     "runtime~main.js.map": "/shine-energy/static/js/runtime~main.2555065e.js.map",
     "static/js/2.65c4bffa.chunk.js": "/shine-energy/static/js/2.65c4bffa.chunk.js",
     "static/js/2.65c4bffa.chunk.js.map": "/shine-energy/static/js/2.65c4bffa.chunk.js.map",
     "index.html": "/shine-energy/index.html",
-    "precache-manifest.f962af612fd0f2e3d7cadfc0e451254c.js": "/shine-energy/precache-manifest.f962af612fd0f2e3d7cadfc0e451254c.js",
+    "precache-manifest.82c963e226ae0c712a4a2cd450d29ed1.js": "/shine-energy/precache-manifest.82c963e226ae0c712a4a2cd450d29ed1.js",
     "service-worker.js": "/shine-energy/service-worker.js",
     "static/css/main.70785b87.chunk.css.map": "/shine-energy/static/css/main.70785b87.chunk.css.map"
   }

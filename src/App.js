@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import '/Users/vincentman/Desktop/Prog/shine-energy/src/Utilities/KeyFrames.scss'
-import { EventEmitter } from 'events';
+
 
 class App extends React.Component {
   constructor(props) {

@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.scss';
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -23,9 +21,7 @@ class App extends React.Component {
         "origin": "https://google.com"
 
       }
-    },
-    )
-      .then(res => {
+    }).then(res => {
         return res.json();
       })
       .then(res => {
@@ -38,9 +34,8 @@ class App extends React.Component {
           elec: {
             ...(prevState.elec),
             prev: res.electricity.reading
-          },
-
-        }))
+          }
+        }));
       }).catch(err => {
         console.log("Our fetch request is failing, error: " + err);
       });
@@ -77,13 +72,13 @@ class App extends React.Component {
         <div className='container container1'>
           <div className='item'>
             Total Bill: <span>{format(this.state.gas.bill + this.state.elec.bill)}
-            p (£{format((this.state.gas.bill + this.state.elec.bill) / 100)})</span>
+              p (£{format((this.state.gas.bill + this.state.elec.bill) / 100)})</span>
           </div>
         </div>
         <div className='container container2'>
           <div className='item'>
             <label htmlFor='gas'>Gas Reading:</label>
-            <input type='number' max="999" name='gas' 
+            <input type='number' max="999" name='gas'
               onChange={e => this.handleInput(e)} /></div>
           <div className='item'>Gas Reading Entered:
             <span>{format(this.state.gas.current)}</span></div>
@@ -108,7 +103,7 @@ class App extends React.Component {
         <div className='container'>
           <div className='item'>
             <label htmlFor='elec'>Electricity Reading:</label>
-            <input type='number' max="999" name='elec' 
+            <input type='number' max="999" name='elec'
               onChange={e => this.handleInput(e)} />
           </div>
           <div className='item'>Electricty Reading Entered: <span>{format(this.state.elec.current)}</span></div>
@@ -136,26 +131,26 @@ class App extends React.Component {
 }
 
 const format = number => {
-  return number == 0 ? 0 : commaDelimit(number)
+  return Number(number) === 0 ? 0 : commaDelimit(number)
 }
 
 const commaDelimit = number => {
   let string = number.toString();
-  return !string.includes('.') ? string
-    .split('')
-    .reverse()
-    .map((char, index) => {
-      return index % 3 == 0 && index != 0 && char != '-' ? char + ',' : char
-    }).reverse().join('') :
+  return !string.includes('.') ? commaDelimitWholeStr(string) :
     string
       .split('.').reduce((whole, fraction) => {
         console.log("Whole " + whole + " fraction " + fraction);
-        return whole.split('')
-          .reverse()
-          .map((char, index) => {
-            return index % 3 == 0 && index != 0 && char != '-' ? char + ',' : char
-          }).reverse().join('').concat('.' + fraction);
+        return commaDelimitWholeStr(whole).concat('.' + fraction);
       });
+}
+
+const commaDelimitWholeStr = string => {
+  return string
+    .split('')
+    .reverse()
+    .map((char, index) => {
+      return index % 3 === 0 && index !== 0 && char !== '-' ? char + ',' : char
+    }).reverse().join('');
 }
 
 export default App;
